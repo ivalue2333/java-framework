@@ -5,12 +5,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.*;
 
-public class CallableTest implements Callable<String> {
+public class CallableDemo implements Callable<String> {
 
-    public CallableTest(String string) {
+    public CallableDemo(String string) {
     }
 
-    public CallableTest() {
+    public CallableDemo() {
     }
 
     @Override
@@ -26,7 +26,7 @@ public class CallableTest implements Callable<String> {
         ExecutorService exec = Executors.newFixedThreadPool(3);
         List<Future<String>> list = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            Callable<String> call = new CallableTest();
+            Callable<String> call = new CallableDemo();
             Future<String> result = exec.submit(call);
 //            如果在在这里获取值，即调用get函数，那么这将阻塞线程，导致其退化为单线程
 //            System.out.println("线程的返回值是" + result.get());
@@ -48,7 +48,7 @@ public class CallableTest implements Callable<String> {
         ExecutorService exec = Executors.newFixedThreadPool(3);
         CompletionService<String> service = new ExecutorCompletionService<String>(exec);
         for (int i = 0; i < 10; i++) {
-            Callable<String> call = new CallableTest();
+            Callable<String> call = new CallableDemo();
             service.submit(call);
         }
 
@@ -66,7 +66,7 @@ public class CallableTest implements Callable<String> {
     }
 
     public static void Test_call() throws ExecutionException, InterruptedException {
-        CallableTest callableTest = new CallableTest();
+        CallableDemo callableTest = new CallableDemo();
         FutureTask<String> ft = new FutureTask<>(callableTest);
         Thread thread = new Thread(ft);
         thread.start();
@@ -76,7 +76,7 @@ public class CallableTest implements Callable<String> {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         System.out.println(Thread.currentThread());
-        CallableTest.callableTest();
+        CallableDemo.callableTest();
 //        CallableTest.completionServiceTest();
 //        CallableTest.Test_call();
     }

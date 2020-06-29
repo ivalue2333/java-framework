@@ -1,22 +1,30 @@
 package com.iota.web.controller;
 
-import com.iota.web.WebApplication;
 import com.iota.web.model.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @RestController
-public class Hello {
+public class HelloWorld {
 
-    private static final Logger logger = LogManager.getLogger(Hello.class);
+    private static final Logger logger = LogManager.getLogger(HelloWorld.class);
+
+    @Value("${server.port}")
+    String port;
+
+    @Value("${chatbot.port}")
+    String chatbotPort;
 
     @RequestMapping("/hello1")
     public String hello1() {
         logger.info("--------------------------------");
-        return "hello1 world";
+        String port_ = "port->" + port + "," + "chatbotPort->" + chatbotPort;
+        logger.info(port_);
+        return "rest1 world." + port_;
     }
 
     @GetMapping("/hello2")
@@ -60,5 +68,13 @@ public class Hello {
     @PostMapping("/hello7_1")
     public String hello7_1(@RequestBody User user) {
         return "name：" + user.getName() + "\n age：" + user.getAge();
+    }
+
+
+    @PostMapping("/hello7_2")
+    public User hello7_2(@RequestBody User user) {
+        user.setName(user.getName() + "xxx");
+        user.setId(123L);
+        return user;
     }
 }

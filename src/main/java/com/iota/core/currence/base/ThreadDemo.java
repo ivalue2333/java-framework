@@ -1,6 +1,6 @@
 package com.iota.core.currence.base;
 
-public class ThreadTest extends Thread {
+public class ThreadDemo extends Thread {
 
     @Override
     public void run() {
@@ -11,7 +11,7 @@ public class ThreadTest extends Thread {
     }
 
     public void test1() {
-        Thread thread = new Thread(new ThreadTest());
+        Thread thread = new Thread(new ThreadDemo());
         System.out.println("thread run()");
         thread.run();
         System.out.println("thread start()");
@@ -29,7 +29,7 @@ public class ThreadTest extends Thread {
     }
 
     public static void main(String[] args) {
-        ThreadTest t = new ThreadTest();
+        ThreadDemo t = new ThreadDemo();
         t.test2();
     }
 }

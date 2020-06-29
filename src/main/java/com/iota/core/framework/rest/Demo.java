@@ -1,9 +1,7 @@
 package com.iota.core.framework.rest;
 
 import com.iota.web.model.User;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+import org.springframework.http.*;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -32,8 +30,8 @@ public class Demo {
         System.out.println(data);
     }
 
-    // post form, [{name=[percy], age=[120]}]
-    private static void testPost2() {
+    // post json
+    private static void testPostJson() {
         RestTemplate restTemplate = new RestTemplate();
         User u = new User();
         u.setName("percy");
@@ -46,13 +44,45 @@ public class Demo {
         System.out.println("user->" + requestJson);
         HttpEntity<String> entity = new HttpEntity<String>(requestJson, headers);
 
-        String data = restTemplate.postForObject(host + "/hello5", entity, String.class);
+        String data = restTemplate.postForObject(host + "/hello7_1", entity, String.class);
         System.out.println(data);
     }
+
+    // post json
+    private static void testPostJsonV2() {
+        RestTemplate restTemplate = new RestTemplate();
+        User user = new User();
+        user.setName("percy");
+        user.setAge(120);
+
+        ResponseEntity<String> userResponseEntity = restTemplate.postForEntity(host + "/hello7_1", user, String.class);
+        HttpStatus statusCode = userResponseEntity.getStatusCode();
+        boolean xxSuccessful = statusCode.is2xxSuccessful();
+        System.out.println(xxSuccessful);
+        System.out.println(userResponseEntity.getBody());
+    }
+
+    // post json
+    private static void testPostJsonGetJson() {
+        RestTemplate restTemplate = new RestTemplate();
+        User user = new User();
+        user.setName("percy");
+        user.setAge(120);
+
+        ResponseEntity<User> userResponseEntity = restTemplate.postForEntity(host + "/hello7_2", user, User.class);
+        HttpStatus statusCode = userResponseEntity.getStatusCode();
+        boolean xxSuccessful = statusCode.is2xxSuccessful();
+        System.out.println(xxSuccessful);
+        System.out.println(userResponseEntity.getBody());
+    }
+
+
 
     public static void main(String[] args) {
 //        testGet();
 //        testPost();
-        testPost2();
+//        testPostJson();
+//        testPostJsonV2();
+        testPostJsonGetJson();
     }
 }

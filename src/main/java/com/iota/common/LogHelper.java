@@ -1,4 +1,4 @@
-package com.iota.web.common;
+package com.iota.common;
 
 import com.iota.web.controller.HelloWorld;
 import org.apache.logging.log4j.LogManager;

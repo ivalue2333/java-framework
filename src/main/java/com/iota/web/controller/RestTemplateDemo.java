@@ -1,6 +1,6 @@
 package com.iota.web.controller;
 
-import com.iota.web.common.LogHelper;
+import com.iota.common.LogHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

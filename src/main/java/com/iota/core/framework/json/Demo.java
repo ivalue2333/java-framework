@@ -9,6 +9,8 @@ public class Demo {
         User u = new User();
         u.setId(123L);
         u.setName("percy");
+        u.setNickName("abc");
+        u.setSchoolLocation("swjtu");
 
         Object data1 = JSONObject.toJSON(u);
         System.out.println(data1);

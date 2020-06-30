@@ -1,8 +1,10 @@
 package com.iota.web.controller;
 
 import com.iota.web.model.User;
+import com.iota.web.service.ServiceDemo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,10 +21,14 @@ public class HelloWorld {
     @Value("${chatbot.port}")
     String chatbotPort;
 
+    @Autowired
+    ServiceDemo serviceDemo;
+
     @RequestMapping("/hello1")
     public String hello1() {
         logger.info("--------------------------------");
         String port_ = "port->" + port + "," + "chatbotPort->" + chatbotPort;
+        serviceDemo.Publish();
         logger.info(port_);
         return "rest1 world." + port_;
     }

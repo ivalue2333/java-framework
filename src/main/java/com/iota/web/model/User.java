@@ -24,6 +24,7 @@ public class User {
     private String regTime;
     private int age;
     private String name;
+    private String SchoolLocation;
 
     public Long getId() {
         return id;
@@ -87,5 +88,13 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSchoolLocation() {
+        return SchoolLocation;
+    }
+
+    public void setSchoolLocation(String schoolLocation) {
+        SchoolLocation = schoolLocation;
     }
 }

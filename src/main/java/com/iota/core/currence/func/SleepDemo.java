@@ -20,5 +20,10 @@ public class SleepDemo implements Runnable {
         SleepDemo sd = new SleepDemo();
         Thread td = new Thread(sd);
         td.start();
+
+        for (int i = 0; i < 5; i++) {
+            System.out.println("主线程第" + i + "次执行");
+        }
+        System.out.println("done");
     }
 }

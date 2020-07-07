@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-public class RestTemplateDemo {
+public class RestTemplateDemoController {
 
-    private static final Logger logger = LogManager.getLogger(RestTemplateDemo.class);
+    private static final Logger logger = LogManager.getLogger(RestTemplateDemoController.class);
 
     @Autowired
     RestTemplate restTemplate;

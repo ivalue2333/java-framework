@@ -7,3 +7,9 @@ spring:
 chatbot:
   port: 9991
   server: 127.0.0.1:9991
+
+
+pulsar:
+  serviceUrl: pulsar://localhost:6650
+  topic:
+    dialog: persistent://public/default/

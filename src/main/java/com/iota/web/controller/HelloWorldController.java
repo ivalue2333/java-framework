@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-public class HelloWorld {
+public class HelloWorldController {
 
-    private static final Logger logger = LogManager.getLogger(HelloWorld.class);
+    private static final Logger logger = LogManager.getLogger(HelloWorldController.class);
 
     @Value("${server.port}")
     String port;

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+
 @Component
 @ConfigurationProperties
 public class ServiceDemo {
@@ -14,6 +16,11 @@ public class ServiceDemo {
 
     @Value("${chatbot.server}")
     String chatbotServer;
+
+    @PostConstruct
+    public void init() {
+        System.out.println("PostConstruct---");
+    }
 
     public void Publish() {
         logger.info("-------------------------");

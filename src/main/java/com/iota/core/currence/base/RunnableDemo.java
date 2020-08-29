@@ -10,7 +10,7 @@ public class RunnableDemo implements Runnable{
         System.out.println(t);
         System.out.printf("name: %s, id: %d\n", t.getName(), t.getId());
         System.out.println("data->" + this.msg);
-        System.out.println("\n");
+        System.out.println();
     }
 
     public void publish(String msg) {
@@ -25,5 +25,8 @@ public class RunnableDemo implements Runnable{
         thread.run();
         System.out.println("thread start()");
         thread.start();
+
+        RunnableDemo rd = new RunnableDemo();
+        rd.publish("abc");
     }
 }

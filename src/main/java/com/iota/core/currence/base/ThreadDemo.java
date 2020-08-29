@@ -28,6 +28,14 @@ public class ThreadDemo extends Thread {
         t.start();
     }
 
+    public void test3() {
+        Thread t = new Thread(() -> {
+            System.out.println("runnable");
+            System.out.println("runnable");
+        });
+        t.start();
+    }
+
     public static void main(String[] args) {
         ThreadDemo t = new ThreadDemo();
         t.test2();
